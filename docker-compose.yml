@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    container_name: php-practice
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 80:80
+  db:
+    image: mysql:8.0
+    platform: linux/arm64
+    tty: true
+    container_name: php-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example_password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: example_password
+      TZ: Asia/tokyo
+    ports:
+      - 3306:3306
+    volumes:
+      - data-php-mysql:/var/lib/mysql
+volumes:
+  data-php-mysql:

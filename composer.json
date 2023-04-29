@@ -1,0 +1,11 @@
+{
+    "name": "phppractice/app",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.1"
+    }
+}
